@@ -1,0 +1,19 @@
+{% extends 'auth/base.html' %}
+
+{% block content %}
+
+{% if not user.is_authenticated %}
+    <form method='POST'>
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">S'inscrire</button>
+    </form>
+{% else %}
+<h1>Déconnecte-toi pour t'enregistrer sous un autre compte</h1>
+<a href={% url 'deco' %}><button class='btn btn-primary'>Logout</button></a>
+
+{% endif %}
+
+
+
+{% endblock content %}

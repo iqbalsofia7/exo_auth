@@ -1,0 +1,27 @@
+{% load static %}  
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title></title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    
+    <link href={% static 'authapp/css/style.css' %} rel="stylesheet">
+
+</head>
+
+<body>
+    {% block content %}
+    {% endblock content %}
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+{% extends "auth/base.html" %}
+
+{% block content %}
+    <div class='m-5'>
+        <div class='d-flex flex-column'>
+            <div class='boutons '>
+                {% if not user.is_authenticated %}
+                
+                    <a href={% url 'createU' %}><button class='btn btn-primary m-2'>Inscription</button></a>
+                    <a href={% url 'connexion' %}><button class='btn btn-primary m-2'>Connexion</button></a>
+                {% else %}
+                    <a href={% url 'deco' %}><button class='btn btn-danger m-2'>Logout</button></a>
+                
+                {% if user.role.nom != 'Banni' %}
+                    <a href={% url 'createA' %}><button class='btn btn-primary m-2'>Create Article</button></a>
+            </div>    
+            
+            <div class='hello mt-3'><a href={% url 'change_password' %}>Changer MDP</a>
+                <h4>Hello {{user.username}}</h4>
+            </div>
+            
+            <div>
+                {% if user.role.nom == "Admin" %}
+                tu es admin
+                    {% for item in articles %}
+                        <i>{{item.titre}},</i>
+                    {% endfor %}
+                    
+                {% endif %}
+                
+                {% if user.role.nom == "Membre" %}
+                tu es membre
+                    {% for item in articles %}
+                        {% if item.utilisateur == user %}
+                            <i>{{item.titre}}</i>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                
+                {% else %}
+                    <p class='text-danger'>Tu es banni 🤫</p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}
+
+

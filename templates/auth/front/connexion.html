@@ -1,0 +1,14 @@
+{% extends 'auth/base.html' %}
+
+{% block content %}
+<form method='POST'>
+    {% csrf_token %}
+    
+    <label for="">UserName</label>
+    <input type="text" name='username'>
+    <label for="">Password</label>
+    <input type="password" name='password'>
+    <button type="submit">Connexion</button>
+    <p class='text-danger'>{{ error }}</p>
+</form>
+{% endblock content %}

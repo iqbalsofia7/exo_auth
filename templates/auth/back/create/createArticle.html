@@ -1,0 +1,16 @@
+{% extends 'auth/base.html' %}
+
+{% block content %}
+{% load static %}
+<div class='m-5'>
+    <h1>Create Article</h1>
+</div>
+<div>
+<form method="post" class="border rounded bg-dark text-light w-100 m-auto d-flex flex-column p-5 align-items-center mt-5">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class='text-center m-auto d-flex rounded btn btn-primary'>Envoyer</button>
+</form>
+    
+</div>
+{% endblock content %}
